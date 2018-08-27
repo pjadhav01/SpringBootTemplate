@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: "template-spring-boot"
+
+  security:
+    user:
+      name: admin
+      password: admin
+
+
+
+
+hello:
+  pattern: "Hello there, %s!"
+
+swagger:
+  baseApiPackage: "com.ibm.hello"
+  title: "Sample API Documentation"
+  description: "Description"
+  version: "0.1.0"
+  termsOfServiceUrl: ""
+  contact:
+    name: "DSG"
+    email: "test@ibm.com"
+  license: "IBM"
+  licenseUrl: ""
+
+management:
+  endpoints:
+    web:
+      base-path: "/metrics"
+      exposure:
+        include: "*"
+
+server:
+  port: 9080
+  ssl:
+    enabled: true
+    trust-store: config/MyServer.jks
+    trust-store-password: password
+    key-store: config/MyServer.jks
+    key-store-password: password
+
+logging:
+  level:
+    ROOT: INFO
+    com.ibm.hello: DEBUG
+    com.ibm.cloud_garage: DEBUG
+    org.springframework: ERROR
+    org.springframework.web: WARN
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    ch.qos.logback.classic: ERROR
+  pattern:
+    console: "%d{YYYY-dd-MM HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %X{X-B3-TraceId:-} ${spring.application.name} %logger{39}.%M %L - %msg%n"
